@@ -43,20 +43,30 @@ export default function Page() {
         alignItems: "center",
         justifyContent: "center",
         height: "100vh",
-        overflow: "hidden", // Prevent scroll overflow
         textAlign: "center",
       }}
     >
       {yesPressed ? (
         <Box sx={{ minHeight: "100vh" }}>
-          <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.5rem",
+            }}
+          >
             <img
               style={{ height: "200px", transform: "rotate(90deg)" }}
               src={NakedOne}
               alt="Naked One"
             />
             <img
-              style={{ height: "200px", marginTop: "1.75rem", marginBottom: "1.75rem" }}
+              style={{
+                height: "200px",
+                marginTop: "1.75rem",
+                marginBottom: "1.75rem",
+              }}
               src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif"
               alt="Bear Kiss"
             />
@@ -89,12 +99,15 @@ export default function Page() {
           <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
             <Button
               variant="contained"
-              color="success"
               sx={{
                 fontSize: yesButtonSize,
                 padding: "0.5rem 1rem",
                 fontWeight: "bold",
                 transition: "background-color 0.3s",
+                backgroundColor: "#66bb6a", // A softer, prettier green
+                "&:hover": {
+                  backgroundColor: "#81c784", // Lighter green on hover
+                },
               }}
               onClick={() => setYesPressed(true)}
             >
