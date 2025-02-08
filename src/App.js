@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { Button, Typography, Box } from "@mui/material";
 
 import churroImage from "../src/images/IMG_2075.jpg";
 import NakedOne from "../src/images/IMG_1941.jpg";
@@ -33,131 +34,87 @@ export default function Page() {
     return phrases[Math.min(noCount, phrases.length - 1)];
   };
 
-  const containerStyle = {
-    marginTop: "-4rem",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "100vh",
-  };
-
-  const yesButtonStyle = {
-    fontSize: yesButtonSize,
-    marginRight: "1rem",
-    borderRadius: "0.375rem",
-    backgroundColor: "#38a169",
-    padding: "0.5rem 1rem",
-    fontWeight: "bold",
-    color: "white",
-    cursor: "pointer",
-    transition: "background-color 0.3s",
-  };
-
-  const yesButtonHoverStyle = {
-    backgroundColor: "#2f855a",
-  };
-
-  const noButtonStyle = {
-    borderRadius: "0.375rem",
-    backgroundColor: "#e53e3e",
-    padding: "0.5rem 1rem",
-    fontWeight: "bold",
-    color: "white",
-    cursor: "pointer",
-    transition: "background-color 0.3s",
-  };
-
-  const noButtonHoverStyle = {
-    backgroundColor: "#c53030",
-  };
-
-  const imageContainerStyle = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "0.5rem",
-  };
-
-  const imageStyle = {
-    height: "200px",
-  };
-
-  const churroImageStyle = {
-    height: "300px",
-  };
-
-  const textStyle = {
-    marginTop: "2.5rem",
-    fontSize: "2rem",
-    fontWeight: "bold",
-    textAlign: "center",
-  };
-
-  const subTextStyle = {
-    marginTop: "1rem",
-    fontSize: "1.25rem",
-    textAlign: "center",
-  };
-
   return (
-    <div style={containerStyle}>
+    <Box
+      sx={{
+        marginTop: "-4rem",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+        overflow: "hidden", // Prevent scroll overflow
+        textAlign: "center",
+      }}
+    >
       {yesPressed ? (
-        <>
-          <div style={{ ...containerStyle, minHeight: "100vh" }}>
-            <div style={imageContainerStyle}>
-              <img
-                style={{ ...imageStyle, transform: "rotate(90deg)" }}
-                src={NakedOne}
-                alt="Naked One"
-              />
-              <img
-                style={{ ...imageStyle, marginTop: "1.75rem", marginBottom: "1.75rem" }}
-                src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif"
-                alt="Bear Kiss"
-              />
-              <img
-                style={{ ...imageStyle, transform: "rotate(90deg)" }}
-                src={NakedTwo}
-                alt="Naked Two"
-              />
-            </div>
+        <Box sx={{ minHeight: "100vh" }}>
+          <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
+            <img
+              style={{ height: "200px", transform: "rotate(90deg)" }}
+              src={NakedOne}
+              alt="Naked One"
+            />
+            <img
+              style={{ height: "200px", marginTop: "1.75rem", marginBottom: "1.75rem" }}
+              src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif"
+              alt="Bear Kiss"
+            />
+            <img
+              style={{ height: "200px", transform: "rotate(90deg)" }}
+              src={NakedTwo}
+              alt="Naked Two"
+            />
+          </Box>
 
-            <div style={textStyle}>
-              WOOOOOO!!! Let's go grab matcha and fuck raw!! ;))
-            </div>
-          </div>
-        </>
+          <Typography variant="h4" sx={{ mt: 6.5 }}>
+            WOOOOOO!!! Let's go grab matcha and go fuck raw!! ;))
+          </Typography>
+        </Box>
       ) : (
         <>
-          <img style={churroImageStyle} src={churroImage} alt="Churro" />
+          <img style={{ height: "300px" }} src={churroImage} alt="Churro" />
           <img
             style={{ height: "200px" }}
             src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif"
             alt="Bear Roses"
           />
-          <h1 style={textStyle}>Will you be my Valentine?</h1>
-          <h6 style={subTextStyle}>From Calvin to Jio (my Pogi)</h6>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <button
-              style={yesButtonStyle}
+          <Typography variant="h3" sx={{ mt: 2.5, fontWeight: "bold" }}>
+            Will you be my Valentine?
+          </Typography>
+          <Typography variant="h6" sx={{ mt: 1 }}>
+            From Calvin to Jio (my Pogi)
+          </Typography>
+
+          <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
+            <Button
+              variant="contained"
+              color="success"
+              sx={{
+                fontSize: yesButtonSize,
+                padding: "0.5rem 1rem",
+                fontWeight: "bold",
+                transition: "background-color 0.3s",
+              }}
               onClick={() => setYesPressed(true)}
-              onMouseEnter={(e) => (e.target.style.backgroundColor = yesButtonHoverStyle.backgroundColor)}
-              onMouseLeave={(e) => (e.target.style.backgroundColor = "#38a169")}
             >
               Yes
-            </button>
-            <button
-              style={noButtonStyle}
+            </Button>
+            <Button
+              variant="contained"
+              color="error"
+              sx={{
+                padding: "0.5rem 1rem",
+                fontWeight: "bold",
+                transition: "background-color 0.3s",
+              }}
               onClick={handleNoClick}
-              onMouseEnter={(e) => (e.target.style.backgroundColor = noButtonHoverStyle.backgroundColor)}
-              onMouseLeave={(e) => (e.target.style.backgroundColor = "#e53e3e")}
             >
               {noCount === 0 ? "No" : getNoButtonText()}
-            </button>
-          </div>
+            </Button>
+          </Box>
         </>
       )}
-    </div>
+    </Box>
   );
 }
